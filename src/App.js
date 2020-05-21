@@ -1,26 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+// component container
+import CounterContainer from './containers/CounterContainer';
+import PostListContainer from './containers/PostListContainer';
+
+// route 적용
+import {Route} from 'react-router-dom';
+import PostListPage from "./pages/PostListPage";
+import PostPage from "./pages/PostPage";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	// return <CounterContainer />;
+	// return <PostListContainer />;
+
+	return (
+		// Fragments - Fragments는 DOM에 별도의 노드를 추가하지 않고 여러 자식을 그룹화할 수 있다 / 약식사용 <React.Fragment></React.Fragment>
+		<>
+			< CounterContainer/>
+			< Route path="/" component={PostListPage} exact/>
+			< Route path="/:id" component={PostPage}/>
+		</>
+	)
 }
 
 export default App;
